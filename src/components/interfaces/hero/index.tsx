@@ -4,11 +4,22 @@ import Search from '@icons/common/search.svg';
 import Button from '@components/common/button';
 import FeaturedWeather from '@components/common/cards/featured-weather';
 import { AnimatePresenceWrapper } from '@components/common/animate-presence-wrapper';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import SearchModal from '@ui/search-modal';
-
+import { addLock, removeLock } from '@utils/body';
+import axios from 'axios';
+import { clientEnv } from 'env/schema.mjs';
 const Hero = () => {
   const [openSearch, setOpenSearch] = useState(false);
+  const openSearchHandler = () => {
+    setOpenSearch(true);
+    addLock();
+  };
+  const closeSearchHandler = () => {
+    setOpenSearch(false);
+    removeLock();
+  };
+
   return (
     <>
       <StyledHero>
@@ -28,7 +39,7 @@ const Hero = () => {
             smoothies…read about how ethically sourcing moringa has had a
             positive impact on farmers and communities.
           </p>
-          <Button onClick={() => setOpenSearch(true)}>
+          <Button onClick={() => openSearchHandler()}>
             Search your city
             <Search />
           </Button>
@@ -77,12 +88,7 @@ const Hero = () => {
         </div>
       </StyledHero>
       <AnimatePresenceWrapper>
-        {openSearch && (
-          <SearchModal
-            isOpen={openSearch}
-            handleClose={() => setOpenSearch(false)}
-          />
-        )}
+        {openSearch && <SearchModal handleClose={() => closeSearchHandler()} />}
       </AnimatePresenceWrapper>
     </>
   );

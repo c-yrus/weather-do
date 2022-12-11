@@ -11,7 +11,7 @@ const StyledButton = styled.button`
   justify-content: center;
   gap: 1.6rem;
   padding: 1.2rem 2.4rem;
-
+  outline: none;
   &.primary {
     color: white;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;

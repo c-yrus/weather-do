@@ -6,8 +6,8 @@ const StyledSearchModal = styled.div`
   padding: 5rem;
   border-radius: 1.6rem;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-  height: 50vh;
-  width: 50vw;
+  height: 100%;
+  width: 100%;
   h2 {
     font-size: 4rem;
     line-height: 3.6rem;

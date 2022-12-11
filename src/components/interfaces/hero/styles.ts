@@ -6,6 +6,7 @@ const StyledHero = styled.section`
   flex-direction: column;
   gap: 11.6rem;
   width: 100%;
+  margin-top: 16rem;
   @media screen and (min-width: 1200px) {
     flex-direction: row;
   }

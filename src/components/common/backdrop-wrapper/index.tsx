@@ -1,3 +1,4 @@
+import { useKeyPress } from '@hooks/useKeyPress';
 import { motion } from 'framer-motion';
 import React, { useEffect } from 'react';
 import StyledBackdropWrapper from './styles';
@@ -30,6 +31,14 @@ const BackdropWrapper: React.FC<BackdropWrapperProps> = ({
       opacity: 0,
     },
   };
+
+  const escapePress = useKeyPress('Escape');
+
+  useEffect(() => {
+    if (escapePress) {
+      closeModal();
+    }
+  }, [escapePress]);
 
   // * this willl auto close
   // useEffect(() => {
