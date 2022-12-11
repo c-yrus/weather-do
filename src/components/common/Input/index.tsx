@@ -5,6 +5,7 @@ type InputProps = {
   name: string;
   label: string;
   placeholder: string;
+  type: 'text' | 'password' | 'email';
   maxLength?: number;
   minLength?: number;
   width?: string;
@@ -13,11 +14,13 @@ type InputProps = {
   required?: boolean;
   disabled?: boolean;
   onChange?: (value: string) => void;
+  children?: React.ReactNode;
 };
 
 const Input: FC<InputProps> = ({
   label,
   name,
+  type,
   placeholder,
   disabled,
   maxLength,
@@ -27,25 +30,29 @@ const Input: FC<InputProps> = ({
   width,
   onChange,
   required,
+  children,
 }) => {
   const inputRef = useRef<HTMLInputElement>(null);
   return (
     <StyledInput style={{ width, padding, height }}>
       <label htmlFor={name}>{label}</label>
-      <input
-        ref={inputRef}
-        type="text"
-        placeholder={placeholder}
-        required={required}
-        autoComplete="on"
-        maxLength={maxLength}
-        minLength={minLength}
-        name={name}
-        onChange={(e) => {
-          onChange && onChange(e.target.value);
-        }}
-        disabled={disabled}
-      />
+      <div className="input">
+        <input
+          ref={inputRef}
+          type={type}
+          placeholder={placeholder}
+          required={required}
+          autoComplete="on"
+          maxLength={maxLength}
+          minLength={minLength}
+          name={name}
+          onChange={(e) => {
+            onChange && onChange(e.target.value);
+          }}
+          disabled={disabled}
+        />
+        {children}
+      </div>
     </StyledInput>
   );
 };

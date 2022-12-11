@@ -3,6 +3,7 @@ import Header from '@ui/header';
 import { BaseLayout } from '@components/layout';
 import { Container } from '@components/common/container';
 import Hero from '@ui/hero';
+import Saves from '@ui/saves';
 
 const Home = () => {
   return (
@@ -14,6 +15,7 @@ const Home = () => {
       </Head>
       <Container>
         <Hero />
+        <Saves />
       </Container>
     </>
   );

@@ -9,6 +9,7 @@ import SearchModal from '@ui/search-modal';
 import { addLock, removeLock } from '@utils/body';
 import axios from 'axios';
 import { clientEnv } from 'env/schema.mjs';
+import WeatherCard from '@components/common/cards/weather-card';
 const Hero = () => {
   const [openSearch, setOpenSearch] = useState(false);
   const openSearchHandler = () => {
@@ -87,6 +88,7 @@ const Hero = () => {
           </div>
         </div>
       </StyledHero>
+
       <AnimatePresenceWrapper>
         {openSearch && <SearchModal handleClose={() => closeSearchHandler()} />}
       </AnimatePresenceWrapper>

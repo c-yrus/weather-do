@@ -1,3 +1,4 @@
+import Footer from '@ui/footer';
 import Header from '@ui/header';
 
 interface LayoutProps {
@@ -10,6 +11,7 @@ export default function BaseLayout({ children }: LayoutProps) {
     <>
       <Header />
       <main>{children}</main>
+      <Footer />
     </>
   );
 }

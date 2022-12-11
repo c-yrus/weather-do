@@ -40,31 +40,39 @@ const StyledInput = styled.div`
       color: red;
     }
   }
+  .input {
+    border: 1px solid #ff5f6d;
+    border-radius: 5rem;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background-color: #f2f2f2;
+    padding-right: 1rem;
+    gap: 1rem;
+    transition: all 0.3s;
 
+    :has(:focus) {
+      box-shadow: 0 0 1px 2px #ffc371;
+    }
+
+    :has(:disabled) {
+      background-color: #f2f2f2;
+    }
+  }
   input {
     width: 100%;
+    border-radius: 2.8rem;
+    border: none;
+    background-color: transparent;
     font-weight: 400;
     font-size: 1.5rem;
     padding-top: 1rem;
     padding-bottom: 1rem;
     text-indent: 1em;
-    border: 1px solid #ff5f6d;
     outline: none;
     height: 5rem;
-    transition: all 0.3s;
-    border-radius: 2.8rem;
-
-    &:focus {
-      /* Box Shadow instead of Outline to support webkit browsers & old Chrome/Firefox */
-      box-shadow: 0 0 1px 2px #ffc371;
-    }
-
     &::placeholder {
       color: gray;
-    }
-
-    &:disabled {
-      background-color: #f2f2f2;
     }
   }
 `;

@@ -9,14 +9,28 @@ const StyledSearchModal = styled.div`
   height: 100%;
   width: 100%;
   h2 {
-    font-size: 4rem;
-    line-height: 3.6rem;
+    font-size: 2.4rem;
+    line-height: 2.4rem;
     font-weight: bolder;
     text-align: center;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     background-image: ${({ theme }) => theme.colors.primary.color};
+    @media screen and (min-width: 768px) {
+      font-size: 4rem;
+      line-height: 3.6rem;
+    }
+  }
+  .search {
+    background: ${({ theme }) => theme.colors.primary.color};
+    border-radius: 10rem;
+    width: 4rem;
+    height: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
   }
 `;
 

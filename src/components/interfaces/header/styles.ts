@@ -47,6 +47,22 @@ const StyledHeader = styled.header`
         font-weight: 400;
         font-size: 2rem;
         line-height: 2.9rem;
+        position: relative;
+      }
+      a::before {
+        content: '';
+        background: ${({ theme }) => theme.colors.primary.color};
+        transition: 0.4s ease-out;
+        width: 0%;
+        height: 2px;
+
+        position: absolute;
+        left: 0;
+        bottom: -3px;
+      }
+
+      a:hover::before {
+        width: 100%;
       }
     }
   }

@@ -16,8 +16,8 @@ const StyledBackdropWrapper = styled.div`
     outline: currentcolor none medium;
     margin: 0 auto;
     align-items: center;
-    width: 100%;
-    height: 100%;
+    width: 90%;
+    height: max-content;
     display: flex;
     justify-content: center;
     align-items: center;

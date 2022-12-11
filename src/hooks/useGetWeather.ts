@@ -29,6 +29,7 @@ export const useGetWeather = (): TWeather => {
       setWeather(data);
       setLoading(false);
     } catch (error: any) {
+      setWeather(null);
       setError(error);
       setLoading(false);
     }

@@ -5,6 +5,7 @@ import { GlobalStyles } from 'styles/globalStyles';
 import theme from 'styles/theme';
 import 'styles/globals.css';
 import Preloader from '@ui/preloader';
+import { SavesProvider } from 'context/saves';
 type AppLayoutProps = {
   Component: PageWithLayoutType;
   pageProps: any;
@@ -21,9 +22,11 @@ function MyApp({ Component, pageProps }: AppLayoutProps) {
       <ThemeProvider theme={theme}>
         <GlobalStyles theme={theme} />
         <Preloader />
-        <Layout>
-          <Component {...pageProps} />;
-        </Layout>
+        <SavesProvider>
+          <Layout>
+            <Component {...pageProps} />;
+          </Layout>
+        </SavesProvider>
       </ThemeProvider>
     </>
   );
