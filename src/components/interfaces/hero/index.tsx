@@ -7,20 +7,27 @@ import { AnimatePresenceWrapper } from '@components/common/animate-presence-wrap
 import { useEffect, useState } from 'react';
 import SearchModal from '@ui/search-modal';
 import { addLock, removeLock } from '@utils/body';
-import axios from 'axios';
-import { clientEnv } from 'env/schema.mjs';
-import WeatherCard from '@components/common/cards/weather-card';
+import type { Weather, WeatherGroupe } from 'context/saves/types';
+import { useGetWeather } from '@hooks/useGetWeather';
+
 const Hero = () => {
   const [openSearch, setOpenSearch] = useState(false);
+  const ids = [2995468, 6455259, 2998285, 2464915];
+  const [featuredWeather, setFeaturedWeather] = useState<WeatherGroupe>();
   const openSearchHandler = () => {
     setOpenSearch(true);
     addLock();
   };
+  const { getGroupWeather } = useGetWeather();
   const closeSearchHandler = () => {
     setOpenSearch(false);
     removeLock();
   };
 
+  useEffect(() => {
+    getGroupWeather(ids, setFeaturedWeather);
+  }, []);
+  console.log(featuredWeather);
   return (
     <>
       <StyledHero>
@@ -49,42 +56,26 @@ const Hero = () => {
           <div className="card" />
           <div className="maze" />
           <div className="container">
-            <FeaturedWeather
-              city="London"
-              country="UK"
-              day="Tuesday"
-              time="6:00 am"
-              state="Mostly Cloudy"
-              temperature={14}
-              type="Cloudy"
-            />
-            <FeaturedWeather
-              city="London"
-              country="UK"
-              day="Tuesday"
-              time="6:00 am"
-              state="Mostly Cloudy"
-              temperature={14}
-              type="Sunny"
-            />
-            <FeaturedWeather
-              city="London"
-              country="UK"
-              day="Tuesday"
-              time="6:00 am"
-              state="Mostly Cloudy"
-              temperature={14}
-              type="Rainy"
-            />
-            <FeaturedWeather
-              city="London"
-              country="UK"
-              day="Tuesday"
-              time="6:00 am"
-              state="Mostly Cloudy"
-              temperature={14}
-              type="Snowy"
-            />
+            {featuredWeather &&
+              featuredWeather.list.map((weather: Weather) => (
+                <FeaturedWeather
+                  key={weather.id}
+                  city={weather.name}
+                  country={weather.sys.country}
+                  dt={weather.dt}
+                  state={
+                    weather.weather && weather.weather[0]?.description
+                      ? weather.weather[0].description
+                      : 'Mostly Cloudy'
+                  }
+                  temperature={weather.main.temp}
+                  type={
+                    weather.weather && weather.weather[0]?.main
+                      ? weather.weather[0].main
+                      : 'Clear'
+                  }
+                />
+              ))}
           </div>
         </div>
       </StyledHero>

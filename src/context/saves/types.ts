@@ -2,6 +2,10 @@ import React from 'react';
 
 /* eslint-disable camelcase */
 
+export interface WeatherGroupe {
+  cnt: number;
+  list: Weather[];
+}
 export interface Weather {
   coord: Coord;
   weather?: WeatherEntity[] | null;

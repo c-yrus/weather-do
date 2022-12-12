@@ -6,7 +6,7 @@ const StyledSaves = styled.section`
   gap: 11.6rem;
   width: 100%;
   margin-top: 16rem;
-  min-height: 50vh;
+  text-align: center;
 
   header {
     display: flex;

@@ -1,4 +1,5 @@
-import { FC, useState } from 'react';
+import { useState } from 'react';
+import type { FC } from 'react';
 import StyledWeatherCard from './styles';
 import Cloudy from '@images/cards/hero/cloud.png';
 import Snowy from '@images/cards/hero/snow.png';

@@ -2,7 +2,8 @@ import BackdropWrapper from '@components/common/backdrop-wrapper';
 import ResultCard from '@components/common/cards/result';
 import Input from '@components/common/Input';
 import { useGetWeather } from '@hooks/useGetWeather';
-import { FC, useState } from 'react';
+import { useState } from 'react';
+import type { FC } from 'react';
 import StyledSearchModal from './styles';
 import Search from '@icons/common/search.svg';
 import { useSaves } from 'context/saves';
@@ -12,11 +13,11 @@ type SearchModalProps = {
 };
 const SearchModal: FC<SearchModalProps> = ({ handleClose }) => {
   const [search, setSearch] = useState<string>('');
-  const { getWeather, weather } = useGetWeather();
+  const { getWeatherByCity, weather } = useGetWeather();
   const { addSave } = useSaves();
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    getWeather({ city: search });
+    getWeatherByCity(search);
   };
   console.log(weather);
   return (

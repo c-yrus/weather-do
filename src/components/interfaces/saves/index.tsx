@@ -8,10 +8,18 @@ const Saves = () => {
   return (
     <StyledSaves>
       <header>
-        <h2>
-          Saved <span>Cities</span>
-        </h2>
-        <p>Here you can find all your saved cities</p>
+        {saves.length === 0 ? (
+          <h2>
+            You don`t have any saved <span>cities</span> yet
+          </h2>
+        ) : (
+          <>
+            <h2>
+              Saved <span>Cities</span>
+            </h2>
+            <p>Here you can find all your saved cities</p>
+          </>
+        )}
       </header>
       <div className="saves-cities">
         {saves.map((save, index) => (
@@ -20,7 +28,11 @@ const Saves = () => {
             city={save.name}
             country={save.sys.country}
             dt={save.dt}
-            state="Mostly Cloudy"
+            state={
+              save.weather && save.weather[0]?.description
+                ? save.weather[0].description
+                : 'Mostly Cloudy'
+            }
             temperature={save.main.temp}
             type={
               save.weather && save.weather[0]?.main

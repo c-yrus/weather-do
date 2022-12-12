@@ -7,6 +7,8 @@ const StyledWeatherCard = styled.div`
   border-radius: 2.5rem;
   position: relative;
   width: 100%;
+  text-align: center;
+
   @media screen and (min-width: 450px) {
     width: 18rem;
   }

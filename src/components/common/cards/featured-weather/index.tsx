@@ -8,32 +8,58 @@ import Rainy from '@images/cards/hero/thunder.png';
 type FeaturedWeatherProps = {
   country: string;
   city: string;
-  day: string;
-  time: string;
+  dt: number;
   state: string;
   temperature: number;
-  type: 'Sunny' | 'Cloudy' | 'Rainy' | 'Snowy';
+  type:
+    | 'Thunderstorm'
+    | 'Drizzle'
+    | 'Rain'
+    | 'Snow'
+    | 'Atmosphere'
+    | 'Clear'
+    | 'Clouds'
+    | 'Extreme'
+    | 'Additional'
+    | 'Mist';
 };
 
 const FeaturedWeather: FC<FeaturedWeatherProps> = ({
   city,
   country,
-  day,
+  dt,
   state,
   temperature,
-  time,
   type,
 }) => {
+  const day = new Date(dt * 1000).toLocaleDateString('en-US', {
+    weekday: 'long',
+  });
+  const time = new Date(dt * 1000).toLocaleTimeString('en-US', {
+    hour: 'numeric',
+    minute: 'numeric',
+    hour12: true,
+  });
+
+  const convertKelvinToCelsius = (temp: number) => {
+    return Math.round(temp - 273.15);
+  };
+  temperature = convertKelvinToCelsius(temperature);
   return (
     <StyledFeaturedWeather className={type}>
       <div className="icon">
-        {type === 'Sunny' && <img src={Sunny.src} alt="Sunny" />}
-        {type === 'Cloudy' && <img src={Cloudy.src} alt="Cloudy" />}
-        {type === 'Rainy' && <img src={Rainy.src} alt="Rainy" />}
-        {type === 'Snowy' && <img src={Snowy.src} alt="Snowy" />}
+        {type === 'Clear' && <img src={Sunny.src} alt="Sunny" />}
+        {(type === 'Clouds' || type === 'Atmosphere' || type === 'Mist') && (
+          <img src={Cloudy.src} alt="Cloudy" />
+        )}
+        {(type === 'Rain' || type === 'Drizzle' || type === 'Thunderstorm') && (
+          <img src={Rainy.src} alt="Rainy" />
+        )}
+
+        {type === 'Snow' && <img src={Snowy.src} alt="Snowy" />}
       </div>
       <h2>
-        {city},{country}
+        {city}, {country}
       </h2>
       <p>
         {day}, {time}
