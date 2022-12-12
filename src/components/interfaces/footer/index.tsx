@@ -6,7 +6,8 @@ const Footer = () => {
     <StyledFooter>
       <div className="drop">
         <p>
-          Made with <span>❤</span>,<br /> Copyright 2022©
+          Made with <span>❤</span>
+          <br /> Copyright 2022©
         </p>
       </div>
     </StyledFooter>

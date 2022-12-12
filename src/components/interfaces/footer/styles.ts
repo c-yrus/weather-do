@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 const StyledFooter = styled.footer`
   margin-top: 16rem;
+  margin-bottom: 16rem;
   width: 100%;
   height: 10rem;
   display: flex;
@@ -11,7 +12,7 @@ const StyledFooter = styled.footer`
 
   .drop {
     width: 200px;
-    height: 150px;
+    height: 200px;
     border-radius: 51% 49% 33% 67% / 39% 48% 52% 61%;
     background: transparent;
     box-shadow: inset 15px 15px 30px #00000020, inset -15px -15px 30px #fff,
@@ -22,17 +23,6 @@ const StyledFooter = styled.footer`
     position: relative;
     cursor: pointer;
     transition: all 0.5s ease;
-  }
-
-  .drop::before {
-    content: '';
-    position: absolute;
-    top: 100px;
-    left: 90px;
-    background: #fff;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
   }
 
   .drop::after {
