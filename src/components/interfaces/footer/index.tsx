@@ -4,11 +4,11 @@ import StyledFooter from './styles';
 const Footer = () => {
   return (
     <StyledFooter>
-      <Container>
+      <div className="drop">
         <p>
-          Made with <span>❤</span>, Copyright 2022 ©
+          Made with <span>❤</span>,<br /> Copyright 2022©
         </p>
-      </Container>
+      </div>
     </StyledFooter>
   );
 };
