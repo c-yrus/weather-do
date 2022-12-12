@@ -10,6 +10,11 @@ const colors = {
     text: '#ffffff',
     description: 'rgba(255,255, 255, 0.4)',
   },
+  toast: {
+    success: 'linear-gradient(91.78deg, #FF5F6D 0%, #FFC371 100%);',
+    warning: '#fbc02d',
+    error: '#fc5b1e',
+  },
 };
 
 export default colors;

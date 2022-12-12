@@ -7,19 +7,28 @@ import type { FC } from 'react';
 import StyledSearchModal from './styles';
 import Search from '@icons/common/search.svg';
 import { useSaves } from 'context/saves';
-
+import LocationIcon from '@icons/common/location.svg';
 type SearchModalProps = {
   handleClose: () => void;
 };
 const SearchModal: FC<SearchModalProps> = ({ handleClose }) => {
   const [search, setSearch] = useState<string>('');
-  const { getWeatherByCity, weather } = useGetWeather();
+  const { getWeatherBylatAndLon, getWeatherByCity, weather } = useGetWeather();
   const { addSave } = useSaves();
   const handleSubmit = (e: any) => {
     e.preventDefault();
     getWeatherByCity(search);
   };
-  console.log(weather);
+
+  const handleClick = () => {
+    navigator.geolocation.getCurrentPosition(function (position) {
+      getWeatherBylatAndLon(
+        position.coords.latitude,
+        position.coords.longitude
+      );
+    });
+  };
+
   return (
     <BackdropWrapper closeModal={() => handleClose()}>
       <StyledSearchModal>
@@ -50,6 +59,11 @@ const SearchModal: FC<SearchModalProps> = ({ handleClose }) => {
             onClick={() => addSave(weather)}
           />
         )}
+        <div className="seperator">OR</div>
+        <div className="location" onClick={handleClick}>
+          <p>Current Location</p>
+          <LocationIcon />
+        </div>
       </StyledSearchModal>
     </BackdropWrapper>
   );

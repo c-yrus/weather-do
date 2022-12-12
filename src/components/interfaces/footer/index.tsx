@@ -1,9 +1,10 @@
-import { Container } from '@components/common/container';
+import { useRouter } from 'next/router';
 import StyledFooter from './styles';
 
 const Footer = () => {
+  const router = useRouter();
   return (
-    <StyledFooter>
+    <StyledFooter onClick={() => router.push('/about')}>
       <div className="drop">
         <p>
           Made with <span>❤</span>

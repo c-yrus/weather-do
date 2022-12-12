@@ -9,7 +9,6 @@ const SavesProvider: FC<SavesProviderProps> = (props) => {
 
   const [saves, setSaves] = useState<Weather[]>([]);
   const addSave = (save: Weather) => {
-    console.log('context', save);
     setSaves((prev) => [...prev, save]);
   };
   const value = { saves, setSaves, addSave };

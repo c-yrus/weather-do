@@ -99,10 +99,10 @@ const Header = () => {
                 </div>
                 <nav>
                   <ul className="links">
-                    <li>
+                    <li onClick={closeSliderHandler}>
                       <Link href="/">Home</Link>
                     </li>
-                    <li>
+                    <li onClick={closeSliderHandler}>
                       <Link href="/about">About</Link>
                     </li>
                   </ul>

@@ -1,6 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800&display=swap'); /*******************/
+/*******************/
 /*  Global Rules  */
 /*****************/
+:root {
+  --font-family: 'Work Sans', sans-serif;
+
+  --toastify-font-family: var(--font-family);
+  --toastify-toast-min-height: 45px;
+  --toastify-z-index: 9999999;
+}
 *,
 *::before,
 *::before {
@@ -13,7 +21,7 @@
 }
 
 html {
-  font-family: 'Work Sans', sans-serif;
+  font-family: var(--font-family);
   scroll-behavior: smooth;
   font-size: 62.5%;
 }

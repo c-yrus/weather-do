@@ -1,6 +1,6 @@
-import Footer from '@ui/footer';
+import { CloseToastButton } from '@components/common/toast';
 import Header from '@ui/header';
-
+import { ToastContainer } from 'react-toastify';
 interface LayoutProps {
   children: React.ReactNode;
 }
@@ -11,7 +11,18 @@ export default function BaseLayout({ children }: LayoutProps) {
     <>
       <Header />
       <main>{children}</main>
-      <Footer />
+      <ToastContainer
+        position="bottom-center"
+        autoClose={5000}
+        hideProgressBar={true}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        closeButton={CloseToastButton}
+      />
     </>
   );
 }

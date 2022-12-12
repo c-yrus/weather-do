@@ -4,15 +4,19 @@ import { ThemeProvider } from 'styled-components';
 import { GlobalStyles } from 'styles/globalStyles';
 import theme from 'styles/theme';
 import 'styles/globals.css';
+import 'react-toastify/dist/ReactToastify.css';
+
 import Preloader from '@ui/preloader';
 import { SavesProvider } from 'context/saves';
+import { AnimatePresence } from 'framer-motion';
+import { useRouter } from 'next/router';
 type AppLayoutProps = {
   Component: PageWithLayoutType;
   pageProps: any;
 };
 function MyApp({ Component, pageProps }: AppLayoutProps) {
   const Layout = Component.layout || ((children) => <>{children}</>);
-
+  const router = useRouter();
   return (
     <>
       <Head>
@@ -21,10 +25,12 @@ function MyApp({ Component, pageProps }: AppLayoutProps) {
       </Head>
       <ThemeProvider theme={theme}>
         <GlobalStyles theme={theme} />
-        <Preloader />
+        {/* <Preloader /> */}
         <SavesProvider>
           <Layout>
-            <Component {...pageProps} />;
+            <AnimatePresence mode="wait" initial={false}>
+              <Component {...pageProps} key={router.asPath} />;
+            </AnimatePresence>
           </Layout>
         </SavesProvider>
       </ThemeProvider>

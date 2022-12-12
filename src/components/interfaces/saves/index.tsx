@@ -4,7 +4,6 @@ import StyledSaves from './styles';
 
 const Saves = () => {
   const { saves } = useSaves();
-  console.log(saves);
   return (
     <StyledSaves>
       <header>

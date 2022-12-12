@@ -27,7 +27,6 @@ const Hero = () => {
   useEffect(() => {
     getGroupWeather(ids, setFeaturedWeather);
   }, []);
-  console.log(featuredWeather);
   return (
     <>
       <StyledHero>
