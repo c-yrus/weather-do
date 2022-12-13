@@ -12,7 +12,7 @@ import { useGetWeather } from '@hooks/useGetWeather';
 
 const Hero = () => {
   const [openSearch, setOpenSearch] = useState(false);
-  const ids = [2995468, 6455259, 2998285, 2464915];
+  const ids = [2464915, 4706057, 6455259, 6180466];
   const [featuredWeather, setFeaturedWeather] = useState<WeatherGroupe>();
   const openSearchHandler = () => {
     setOpenSearch(true);

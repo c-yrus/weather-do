@@ -25,7 +25,7 @@ function MyApp({ Component, pageProps }: AppLayoutProps) {
       </Head>
       <ThemeProvider theme={theme}>
         <GlobalStyles theme={theme} />
-        {/* <Preloader /> */}
+        <Preloader />
         <SavesProvider>
           <Layout>
             <AnimatePresence mode="wait" initial={false}>
